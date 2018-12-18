@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.maiitzhao.myapplication.common.NavigationTitleBar
+        android:id="@+id/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        app:title="涂鸦板"/>
+
+    <FrameLayout
+        android:id="@+id/fl_boardcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_bottom_boardstyle"
+        android:layout_below="@+id/navigation_bar"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/rg_drawgraphics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/btn_savesd"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/tuya_save_selector"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/btn_revoke"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/tuya_revoke_selector"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/btn_clean"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/tuya_clean_selector"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/btn_picselect"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/tuya_picselect_selector"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/btn_drawcycle"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/tuya_circle_selector"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/btn_drawrec"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/tuya_rectangle_selector"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/btn_drawarrow"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/tuya_arrow_selector"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/btn_null"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/tuya_save_selector"
+                android:button="@null"
+                android:visibility="gone" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/sb_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_bottom_boardstyle"
+        android:max="30"
+        android:progress="5"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/ll_bottom_boardstyle"
+        android:background="#33000000" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_boardstyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#F0F5D1"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:id="@+id/ll_paint_style"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bottom_color_selector"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_paintstyle"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="12dp"
+                android:background="@mipmap/paint_style" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_paint_color"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bottom_color_selector"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="12dp"
+                android:background="@mipmap/paint_color" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_paint_size"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bottom_color_selector"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="12dp"
+                android:background="@mipmap/paint_size" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/layout_paintcolor_popup" />
+
+</RelativeLayout>

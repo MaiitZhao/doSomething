@@ -1,0 +1,93 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--设置没有标题-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:title">false</item>
+
+        <!--设置activity切换动画-->
+        <!--<item name="android:windowAnimationStyle">@style/activityAnimation</item>-->
+
+        <!--解决切换黑屏问题  造成切换动画丢失的假象-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+    </style>
+
+    <!---弹窗样式-->
+    <style name="commonDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+    <!-- 此为通用title标题属性-->
+    <declare-styleable name="activity_common_title">
+        <attr name="title" format="string" />              <!--title 名称-->
+        <attr name="title_color" format="color" />         <!--title 颜色-->
+        <attr name="left_title" format="string" />         <!--title 左边名称-->
+        <attr name="right_title" format="string" />        <!--title 右边名称-->
+        <attr name="right_img" format="reference" />       <!--title 右边图片-->
+        <attr name="background_color" format="color" />    <!--title 背景颜色-->
+        <attr name="right_states" format="boolean" />      <!--title 右边是否显示-->
+        <attr name="left_states" format="enum">          <!--title 左边显示的状态-->
+            <enum name="back" value="0" />
+            <enum name="text" value="1" />
+            <enum name="none" value="2" />
+        </attr>
+        <attr name="back_color_states" format="boolean" /> <!--title 返回箭头颜色-->
+    </declare-styleable>
+
+    <!--dialog样式-->
+    <style name="FullScreenDialog" parent="commonDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">false</item> <!--是否浮现在Activity之上-->
+        <item name="android:windowIsTranslucent">true</item> <!--是否透明-->
+        <item name="android:windowNoTitle">true</item> <!--无标题-->
+        <item name="android:windowBackground">@android:color/transparent</item> <!--背景透明-->
+        <item name="android:backgroundDimEnabled">true</item> <!--背景是否模糊显示-->
+        <item name="android:backgroundDimAmount">0.4</item>
+    </style>
+    <!--字体样式-->
+    <declare-styleable name="fontStyle">
+        <attr name="stroke_color" format="color" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="text_color" format="color" />
+        <attr name="is_stroke" format="boolean" />
+        <attr name="is_bold" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color" />
+        <attr name="radius_degree" />
+    </declare-styleable>
+
+    <!-- 弹窗进度条-->
+    <declare-styleable name="FlikerProgressBar">
+        <attr name="pbtextSize" format="dimension" />
+        <attr name="pbtextColor" format="color" />
+        <attr name="loadingColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="textDisStyle" format="enum">
+            <enum name="all" value="0" />
+            <enum name="percent" value="1" />
+        </attr>
+        <attr name="textDescColor" format="color" />
+        <attr name="stopColor" format="color" />
+        <attr name="radius" format="dimension" />
+        <attr name="borderWidth" format="dimension" />
+
+    </declare-styleable>
+
+</resources>
