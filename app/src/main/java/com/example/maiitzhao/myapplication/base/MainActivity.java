@@ -1,7 +1,12 @@
 package com.example.maiitzhao.myapplication.base;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.maiitzhao.myapplication.CommonViewActivity;
 import com.example.maiitzhao.myapplication.R;
@@ -12,9 +17,18 @@ import com.example.maiitzhao.myapplication.signmap.SignMapActivity;
 import com.example.maiitzhao.myapplication.update.UpdateAppActivity;
 import com.example.maiitzhao.myapplication.util.CommonUtil;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
+
+    @BindView(R.id.tv_gridview)
+    ImageView tvGrid;
+
+    @BindView(R.id.iv_trans)
+    ImageView ivTrans;
+    @BindView(R.id.tv_trans)
+    TextView tvTrans;
 
     @Override
     protected int initContentView() {
@@ -25,7 +39,8 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
     }
 
-    @OnClick({R.id.tv_paint_bord, R.id.tv_paint, R.id.tv_update, R.id.tv_pdf, R.id.tv_pdf2, R.id.tv_pdf3, R.id.tv_pdf4,R.id.tv_gridview})
+    @OnClick({R.id.tv_paint_bord, R.id.tv_paint, R.id.tv_update, R.id.tv_pdf, R.id.tv_pdf2, R.id.tv_pdf3,
+            R.id.tv_pdf4, R.id.tv_gridview, R.id.ll_trans})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_paint_bord:
@@ -59,7 +74,15 @@ public class MainActivity extends BaseActivity {
                 CommonUtil.toActivityBundle(DocumentDisplayActivity.class, bundlePPT);
                 break;
             case R.id.tv_gridview:
-                CommonUtil.toActivity(CommonViewActivity.class);
+                Intent intent = new Intent(this, CommonViewActivity.class);
+                Bundle bundleXioguo = ActivityOptionsCompat.makeSceneTransitionAnimation(this, tvGrid, getString(R.string.trans_tag_image)).toBundle();
+                startActivity(intent, bundleXioguo);
+                break;
+            case R.id.ll_trans:
+                Intent intent2 = new Intent(this, CommonViewActivity.class);
+                Pair<View, String> pair1 = new Pair<View, String>(ivTrans, getString(R.string.trans_tag_image));
+                Pair<View, String> pair2 = new Pair<View, String>(tvTrans, getString(R.string.trans_tag_text));
+                startActivity(intent2, ActivityOptionsCompat.makeSceneTransitionAnimation(this, pair1,pair2).toBundle());
                 break;
         }
     }

@@ -1,13 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.maiitzhao.myapplication.CommonViewActivity">
 
-    <GridView
-        android:id="@+id/gridview"
+    <com.example.maiitzhao.myapplication.common.NavigationTitleBar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="45dp"
+        app:title="效果展示" />
+
+    <LinearLayout
+        android:id="@+id/ll_trans"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_trans"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/logo"
+            android:layout_gravity="center"
+            android:transitionName="@string/trans_tag_image" />
+
+        <TextView
+            android:id="@+id/tv_trans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/explain"
+            android:transitionName="@string/trans_tag_text" />
+
+    </LinearLayout>
 
 </RelativeLayout>

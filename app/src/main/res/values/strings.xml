@@ -3,4 +3,10 @@
 
     <string name="install_app_text">会员需要在课海开通，需要下载安装课海APP\n首次安装登录\n可获得1000积分的奖励</string>
 
+    <string name="trans_tag_image">tag_image</string>
+
+    <string name="trans_tag_text">tag_text</string>
+
+    <string name="explain">两界面之间关于共享元素动画需要使用的文本内容，电话不是骄傲的不会撒不到好久啊不会觉得不回家撒</string>
+
 </resources>
