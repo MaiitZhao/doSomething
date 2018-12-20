@@ -23,17 +23,19 @@
             android:id="@+id/iv_trans"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginTop="10dp"
-            android:src="@mipmap/logo"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/img_share_elements"
             android:transitionName="@string/trans_tag_image" />
 
         <TextView
             android:id="@+id/tv_trans"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:text="@string/explain"
+            android:textColor="@color/black"
             android:transitionName="@string/trans_tag_text" />
 
     </LinearLayout>
