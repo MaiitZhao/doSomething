@@ -254,6 +254,7 @@ public class UpdateAppActivity extends BaseActivity implements UpdateAppManager.
                 mIbInstall.setVisibility(VISIBLE);
                 llProgress.setVisibility(INVISIBLE);
                 mUpdateDialog.dismiss();
+                UpdateAppManager.getInstance().unregisterDownloadObserver(this);
                 break;
             case UpdateAppManager.STATE_ERROR:
                 CommonUtil.showToastShort("下载出错了，请重新下载！");

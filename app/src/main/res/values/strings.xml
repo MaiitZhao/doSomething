@@ -7,6 +7,6 @@
 
     <string name="trans_tag_text">tag_text</string>
 
-    <string name="explain">两界面之间关于共享元素动画需要使用的文本内容，电话不是骄傲的不会撒不到好久啊不会觉得不回家撒</string>
+    <string name="explain">两界面之间关于共享元素动画需要使用的文本内容.要实现共享元素动画，需要两界面的控件使用transitionName来作为标记，跳转时才能达到平移效果.平移可以在单对单控件之间发生，同样也适用于多对多，只需要两两之间加上相同的transitionName串</string>
 
 </resources>

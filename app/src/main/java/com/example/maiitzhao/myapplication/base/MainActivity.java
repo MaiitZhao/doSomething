@@ -82,7 +82,7 @@ public class MainActivity extends BaseActivity {
                 Intent intent2 = new Intent(this, CommonViewActivity.class);
                 Pair<View, String> pair1 = new Pair<View, String>(ivTrans, getString(R.string.trans_tag_image));
                 Pair<View, String> pair2 = new Pair<View, String>(tvTrans, getString(R.string.trans_tag_text));
-                startActivity(intent2, ActivityOptionsCompat.makeSceneTransitionAnimation(this, pair1,pair2).toBundle());
+                startActivity(intent2, ActivityOptionsCompat.makeSceneTransitionAnimation(this, pair1, pair2).toBundle());
                 break;
         }
     }
