@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.maiitzhao.myapplication.CommonViewActivity;
 import com.example.maiitzhao.myapplication.R;
+import com.example.maiitzhao.myapplication.ele.ELMActivity;
 import com.example.maiitzhao.myapplication.paintboard.PaintBoardActivity;
 import com.example.maiitzhao.myapplication.pdf.DocumentDisplayActivity;
 import com.example.maiitzhao.myapplication.pdf.PdfDisActivity;
@@ -40,7 +41,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick({R.id.tv_paint_bord, R.id.tv_paint, R.id.tv_update, R.id.tv_pdf, R.id.tv_pdf2, R.id.tv_pdf3,
-            R.id.tv_pdf4, R.id.tv_gridview, R.id.ll_trans})
+            R.id.tv_pdf4, R.id.tv_gridview, R.id.ll_trans, R.id.tv_ele})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_paint_bord:
@@ -72,6 +73,9 @@ public class MainActivity extends BaseActivity {
                 Bundle bundlePPT = new Bundle();
                 bundlePPT.putInt("type", 3);
                 CommonUtil.toActivityBundle(DocumentDisplayActivity.class, bundlePPT);
+                break;
+            case R.id.tv_ele:
+                CommonUtil.toActivity(ELMActivity.class);
                 break;
             case R.id.tv_gridview:
                 Intent intent = new Intent(this, CommonViewActivity.class);

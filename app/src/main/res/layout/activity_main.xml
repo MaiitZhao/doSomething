@@ -62,6 +62,13 @@
         android:padding="10dp"
         android:text="TBS ppt" />
 
+    <TextView
+        android:id="@+id/tv_ele"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="elema" />
+
 
     <ImageView
         android:id="@+id/tv_gridview"
