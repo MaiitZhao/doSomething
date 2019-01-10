@@ -7,10 +7,26 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.maiitzhao.myapplication.R;
+import com.example.maiitzhao.myapplication.base.AppAplication;
 import com.example.maiitzhao.myapplication.base.BaseActivity;
+import com.example.maiitzhao.myapplication.base.MessageEvent;
+import com.example.maiitzhao.myapplication.util.CommonUtil;
+import com.scwang.smartrefresh.layout.api.RefreshFooter;
+import com.scwang.smartrefresh.layout.api.RefreshHeader;
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.footer.FalsifyFooter;
+import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.header.FalsifyHeader;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 
@@ -39,7 +55,6 @@ public class ELMActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
         initToolbar();
 
         TabPagerAdapter tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
@@ -48,9 +63,9 @@ public class ELMActivity extends BaseActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 0){
+                if (tab.getPosition() == 0) {
                     toolbar.setTitle("急了么");
-                }else {
+                } else {
                     toolbar.setTitle(tab.getText());
                 }
             }
@@ -79,6 +94,37 @@ public class ELMActivity extends BaseActivity {
         return true;
     }
 
+    @Override
+    @Subscribe
+    public boolean onOptionsItemSelected(MenuItem item) {
+        MessageEvent event = new MessageEvent();
+        event.setType(MessageEvent.CHANGE_STYPE);
+        switch (item.getItemId()) {
+            case R.id.type_header1:
+                event.setData(new ClassicsHeader(this));
+                break;
+            case R.id.type_header2:
+                event.setData(new BezierRadarHeader(this));
+                break;
+            case R.id.type_header3:
+                event.setData(new FalsifyHeader(this));
+                break;
+
+            case R.id.type_footer1:
+                event.setData(new ClassicsFooter(this).setDrawableSize(20));
+                break;
+            case R.id.type_footer2:
+                event.setData(new BallPulseFooter(this));
+                break;
+            case R.id.type_footer3:
+                event.setData(new FalsifyFooter(this));
+                break;
+        }
+
+        EventBus.getDefault().post(event);
+        return true;
+    }
+
     class TabPagerAdapter extends FragmentPagerAdapter {
 
         public TabPagerAdapter(FragmentManager fm) {
@@ -103,5 +149,17 @@ public class ELMActivity extends BaseActivity {
         public CharSequence getPageTitle(int position) {
             return titles[position];
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 }

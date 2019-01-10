@@ -1,33 +1,48 @@
 package com.example.maiitzhao.myapplication.ele;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.maiitzhao.myapplication.R;
+import com.example.maiitzhao.myapplication.base.MessageEvent;
 import com.example.maiitzhao.myapplication.util.CommonUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshFooter;
+import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersTouchListener;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 public class TotalFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private int position;
+    private SmartRefreshLayout smartRefreshLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        EventBus.getDefault().register(this);
         position = getArguments().getInt("position");
     }
 
@@ -39,7 +54,7 @@ public class TotalFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final SmartRefreshLayout smartRefreshLayout = (SmartRefreshLayout) view.findViewById(R.id.refreshLayout);
+        smartRefreshLayout = (SmartRefreshLayout) view.findViewById(R.id.refreshLayout);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -59,7 +74,7 @@ public class TotalFragment extends Fragment {
 //                    }
 //                });
 //        recyclerView.addOnItemTouchListener(touchListener);
-
+        smartRefreshLayout.setPrimaryColorsId(R.color.colorPrimary);//全局设置主题颜色
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
@@ -72,5 +87,41 @@ public class TotalFragment extends Fragment {
                 smartRefreshLayout.finishLoadmore(1500); //模拟加载更多
             }
         });
+    }
+
+    /**
+     * 切换头部样式
+     */
+    public void changeHeader(RefreshHeader header) {
+        if (smartRefreshLayout != null) {
+            smartRefreshLayout.setRefreshHeader(header);
+        }
+    }
+
+    /**
+     * 切换脚部样式
+     */
+    public void changeFooter(RefreshFooter footer) {
+        if (smartRefreshLayout != null) {
+            smartRefreshLayout.setRefreshFooter(footer);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(MessageEvent event) {
+        if (event.getType() == MessageEvent.CHANGE_STYPE) {
+            Object data = event.getData();
+            if (data instanceof RefreshHeader) {
+                changeHeader((RefreshHeader) data);
+            } else if (data instanceof RefreshFooter) {
+                changeFooter((RefreshFooter) data);
+            }
+        }
     }
 }

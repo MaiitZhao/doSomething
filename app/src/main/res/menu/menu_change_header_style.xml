@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--<item-->
+        <!--android:id="@+id/action_change_style"-->
+        <!--android:icon="@mipmap/icon_change_style"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="切换"-->
+        <!--app:showAsAction="ifRoom" />-->
+
     <item
-        android:id="@+id/action_settings"
-        android:icon="@mipmap/icon_change_style"
-        android:orderInCategory="100"
-        android:title="搜索"
-        app:showAsAction="always" />
+        android:id="@+id/type_header1"
+        android:title="头部刷新样式一"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/type_header2"
+        android:title="头部刷新样式二"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/type_header3"
+        android:title="头部刷新样式三"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/type_footer1"
+        android:title="脚部刷新样式一"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/type_footer2"
+        android:title="脚部刷新样式二"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/type_footer3"
+        android:title="脚部刷新样式三"
+        app:showAsAction="never" />
+
 </menu>
