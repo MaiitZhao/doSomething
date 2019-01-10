@@ -43,7 +43,7 @@ public class TotalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_header, parent, false);
+        View view = View.inflate(context, R.layout.item_header, null);
         return new HeaderViewHolder(view);
     }
 
@@ -61,12 +61,12 @@ public class TotalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        CommonUtil.showToastShort("点击");
+                        CommonUtil.showToastShort("点击整体");
                     }
                 });
                 holder = new RecommendViewHolder(view);
                 break;
-            case R.layout.item_header:
+            case R.layout.item_header://经测试事件无效
                 view.findViewById(R.id.type1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -91,7 +91,6 @@ public class TotalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                         CommonUtil.showToastShort("筛选");
                     }
                 });
-                holder = new HeaderViewHolder(view);
                 break;
             case R.layout.item_test:
 
@@ -119,10 +118,12 @@ public class TotalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         } else {
             holder.itemView.setTag("模拟商品描述" + position);
             ((ViewHolder) holder).mContent.setText("模拟商品描述" + position);
-            if (position % 2 == 0) {
-                ((ViewHolder) holder).mIvIcon.setImageResource(R.mipmap.ic_test2);
-            } else {
+            if (position % 3 == 0) {
                 ((ViewHolder) holder).mIvIcon.setImageResource(R.mipmap.ic_test1);
+            } else if (position % 3 == 1) {
+                ((ViewHolder) holder).mIvIcon.setImageResource(R.mipmap.ic_test2);
+            } else if (position % 3 == 2) {
+                ((ViewHolder) holder).mIvIcon.setImageResource(R.mipmap.ic_test3);
             }
         }
     }
@@ -130,21 +131,13 @@ public class TotalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public int getItemViewType(int position) {
         int viewResId;
-        if (isHome) {
-            if (position == 0) {
-                viewResId = R.layout.item_recommend;
-            } else if (position == 1) {
-                viewResId = R.layout.item_header;
-            } else {
-                viewResId = R.layout.item_test;
-            }
+
+        if (position == 0 && isHome) {
+            viewResId = R.layout.item_recommend;
         } else {
-            if (position == 0) {
-                viewResId = R.layout.item_header;
-            } else {
-                viewResId = R.layout.item_test;
-            }
+            viewResId = R.layout.item_test;
         }
+
         return viewResId;
     }
 

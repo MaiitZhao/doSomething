@@ -11,10 +11,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.maiitzhao.myapplication.R;
+import com.example.maiitzhao.myapplication.util.CommonUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersTouchListener;
 
 public class TotalFragment extends Fragment {
 
@@ -43,6 +46,19 @@ public class TotalFragment extends Fragment {
         TotalAdapter adapter = new TotalAdapter(getContext(), position == 0);
         recyclerView.setAdapter(adapter);
 
+        StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(adapter);
+        recyclerView.addItemDecoration(headersDecor);
+
+//        StickyRecyclerHeadersTouchListener touchListener =
+//                new StickyRecyclerHeadersTouchListener(recyclerView, headersDecor);
+//        touchListener.setOnHeaderClickListener(
+//                new StickyRecyclerHeadersTouchListener.OnHeaderClickListener() {
+//                    @Override
+//                    public void onHeaderClick(View header, int position, long headerId) {
+//                        CommonUtil.showToastShort( "Header position: " + position + ", id: " + headerId);
+//                    }
+//                });
+//        recyclerView.addOnItemTouchListener(touchListener);
 
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
