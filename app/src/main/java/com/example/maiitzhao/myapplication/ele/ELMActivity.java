@@ -45,11 +45,31 @@ public class ELMActivity extends BaseActivity {
         TabPagerAdapter tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(tabPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 0){
+                    toolbar.setTitle("急了么");
+                }else {
+                    toolbar.setTitle(tab.getText());
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     private void initToolbar() {
         toolbar.setNavigationIcon(R.mipmap.ic_back);
-        toolbar.setTitle("饿了么");
+        toolbar.setTitle("急了么");
         setSupportActionBar(toolbar);
     }
 
