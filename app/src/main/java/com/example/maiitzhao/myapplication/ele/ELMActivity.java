@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 import com.example.maiitzhao.myapplication.R;
 import com.example.maiitzhao.myapplication.base.BaseActivity;
@@ -50,6 +51,12 @@ public class ELMActivity extends BaseActivity {
         toolbar.setNavigationIcon(R.mipmap.ic_back);
         toolbar.setTitle("饿了么");
         setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_change_header_style, menu);
+        return true;
     }
 
     class TabPagerAdapter extends FragmentPagerAdapter {
