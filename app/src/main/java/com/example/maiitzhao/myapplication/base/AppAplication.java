@@ -4,23 +4,17 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.maiitzhao.myapplication.R;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreater;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreater;
 import com.scwang.smartrefresh.layout.api.RefreshFooter;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.tencent.smtt.sdk.QbSdk;
-
-import butterknife.ButterKnife;
 
 /**
  * Created by zpxiang on 2018/11/19.

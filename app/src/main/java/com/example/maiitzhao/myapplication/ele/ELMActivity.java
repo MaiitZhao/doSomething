@@ -7,17 +7,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.maiitzhao.myapplication.R;
-import com.example.maiitzhao.myapplication.base.AppAplication;
 import com.example.maiitzhao.myapplication.base.BaseActivity;
 import com.example.maiitzhao.myapplication.base.MessageEvent;
-import com.example.maiitzhao.myapplication.util.CommonUtil;
-import com.scwang.smartrefresh.layout.api.RefreshFooter;
-import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.footer.FalsifyFooter;
