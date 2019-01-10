@@ -1,6 +1,5 @@
 package com.example.maiitzhao.myapplication.ele;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -53,7 +52,6 @@ public class ELMActivity extends BaseActivity {
         setSupportActionBar(toolbar);
     }
 
-
     class TabPagerAdapter extends FragmentPagerAdapter {
 
         public TabPagerAdapter(FragmentManager fm) {
@@ -64,7 +62,7 @@ public class ELMActivity extends BaseActivity {
         public Fragment getItem(int position) {
             TotalFragment fragment = new TotalFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("content", titles[position]);
+            bundle.putInt("position", position);
             fragment.setArguments(bundle);
             return fragment;
         }

@@ -52,4 +52,6 @@ dependencies {
     compile 'com.github.barteksc:android-pdf-viewer:2.8.2'
     implementation files('libs/tbs_sdk_thirdapp.jar')
     implementation 'com.android.support:design:25.3.1'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'com.timehop.stickyheadersrecyclerview:library:[0.4.3]@aar'
 }
