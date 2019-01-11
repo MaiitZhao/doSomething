@@ -9,16 +9,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.maiitzhao.myapplication.R;
 import com.example.maiitzhao.myapplication.base.BaseActivity;
 import com.example.maiitzhao.myapplication.base.MessageEvent;
+import com.scwang.smartrefresh.header.FlyRefreshHeader;
+import com.scwang.smartrefresh.header.TaurusHeader;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.scwang.smartrefresh.layout.footer.FalsifyFooter;
 import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
-import com.scwang.smartrefresh.layout.header.FalsifyHeader;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -80,6 +81,12 @@ public class ELMActivity extends BaseActivity {
     private void initToolbar() {
         toolbar.setNavigationIcon(R.mipmap.ic_back);
         toolbar.setTitle("急了么");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         setSupportActionBar(toolbar);
     }
 
@@ -102,7 +109,10 @@ public class ELMActivity extends BaseActivity {
                 event.setData(new BezierRadarHeader(this));
                 break;
             case R.id.type_header3:
-                event.setData(new FalsifyHeader(this));
+                event.setData(new FlyRefreshHeader(this));
+                break;
+            case R.id.type_footer4:
+                event.setData(new TaurusHeader(this));
                 break;
 
             case R.id.type_footer1:
@@ -110,9 +120,6 @@ public class ELMActivity extends BaseActivity {
                 break;
             case R.id.type_footer2:
                 event.setData(new BallPulseFooter(this));
-                break;
-            case R.id.type_footer3:
-                event.setData(new FalsifyFooter(this));
                 break;
         }
 

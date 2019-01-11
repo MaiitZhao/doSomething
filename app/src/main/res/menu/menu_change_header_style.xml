@@ -10,28 +10,28 @@
 
     <item
         android:id="@+id/type_header1"
-        android:title="头部刷新样式一"
+        android:title="头部：标准"
         app:showAsAction="never" />
     <item
         android:id="@+id/type_header2"
-        android:title="头部刷新样式二"
+        android:title="头部：雷达头"
         app:showAsAction="never" />
     <item
         android:id="@+id/type_header3"
-        android:title="头部刷新样式三"
+        android:title="头部：纸飞机"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/type_footer4"
+        android:title="头部：冲上云霄"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/type_footer1"
-        android:title="脚部刷新样式一"
+        android:title="脚部：标准"
         app:showAsAction="never" />
     <item
         android:id="@+id/type_footer2"
-        android:title="脚部刷新样式二"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/type_footer3"
-        android:title="脚部刷新样式三"
+        android:title="脚部：雷达"
         app:showAsAction="never" />
 
 </menu>

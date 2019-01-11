@@ -84,7 +84,7 @@ public class NavigationTitleBar extends RelativeLayout implements View.OnClickLi
         // 左边文字
         leftTitle = typedArray.getString(R.styleable.activity_common_title_left_title);
         // title背景颜色
-        backgroundColor = typedArray.getColor(R.styleable.activity_common_title_background_color, context.getResources().getColor(R.color.black));
+        backgroundColor = typedArray.getColor(R.styleable.activity_common_title_background_color, context.getResources().getColor(R.color.colorPrimary));
         // title 文字
         title = typedArray.getString(R.styleable.activity_common_title_title);
         // title 文字颜色

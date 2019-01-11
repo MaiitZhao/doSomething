@@ -53,6 +53,7 @@ dependencies {
     implementation files('libs/tbs_sdk_thirdapp.jar')
     implementation 'com.android.support:design:25.3.1'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'//smartrefresh的特殊header
     compile 'com.timehop.stickyheadersrecyclerview:library:[0.4.3]@aar'
     implementation 'org.greenrobot:eventbus:3.1.1'
 }
