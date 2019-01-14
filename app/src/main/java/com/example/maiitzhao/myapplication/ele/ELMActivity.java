@@ -79,9 +79,9 @@ public class ELMActivity extends BaseActivity {
     }
 
     private void initToolbar() {
-        setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.ic_back);
         toolbar.setTitle("急了么");
+        setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
