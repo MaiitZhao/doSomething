@@ -79,6 +79,7 @@ public class ELMActivity extends BaseActivity {
     }
 
     private void initToolbar() {
+        setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.ic_back);
         toolbar.setTitle("急了么");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -87,7 +88,6 @@ public class ELMActivity extends BaseActivity {
                 finish();
             }
         });
-        setSupportActionBar(toolbar);
     }
 
     @Override
