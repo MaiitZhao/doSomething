@@ -52,7 +52,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".CommonViewActivity" />
+        <activity android:name=".ShareElementActivity" />
         <activity android:name=".ele.ELMActivity"/>
     </application>
 

@@ -1,6 +1,10 @@
 package com.example.maiitzhao.myapplication.ele;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.maiitzhao.myapplication.R;
+import com.example.maiitzhao.myapplication.ShareElementActivity;
 import com.example.maiitzhao.myapplication.util.CommonUtil;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
@@ -91,15 +96,9 @@ public class TotalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                         CommonUtil.showToastShort("筛选");
                     }
                 });
+                holder = new HeaderViewHolder(view);
                 break;
             case R.layout.item_test:
-
-                view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        CommonUtil.showToastShort(String.valueOf(view.getTag()));
-                    }
-                });
                 holder = new ViewHolder(view);
                 break;
 
@@ -109,7 +108,7 @@ public class TotalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof RecommendViewHolder) {
             //绑定推荐
 
@@ -117,14 +116,30 @@ public class TotalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             //绑定头数据
         } else {
             holder.itemView.setTag("模拟商品描述" + position);
-            ((ViewHolder) holder).mContent.setText("模拟商品描述" + position);
+            ((ViewHolder) holder).mContent.setText(context.getString(R.string.explain) + position);
+            int resId = 0;
             if (position % 3 == 0) {
-                ((ViewHolder) holder).mIvIcon.setImageResource(R.mipmap.ic_test1);
+                resId = R.mipmap.ic_test1;
             } else if (position % 3 == 1) {
-                ((ViewHolder) holder).mIvIcon.setImageResource(R.mipmap.ic_test2);
+                resId = R.mipmap.ic_test2;
             } else if (position % 3 == 2) {
-                ((ViewHolder) holder).mIvIcon.setImageResource(R.mipmap.ic_test3);
+                resId = R.mipmap.ic_test3;
             }
+            ((ViewHolder) holder).mIvIcon.setImageResource(resId);
+
+            final ViewHolder finalHolder = (ViewHolder) holder;
+            final int finalResId = resId;
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CommonUtil.showToastShort(String.valueOf("模拟商品描述" + position));
+                    Intent intent = new Intent(context, ShareElementActivity.class);
+                    intent.putExtra("imgId", finalResId);
+                    Pair<View, String> pair1 = new Pair<View, String>(finalHolder.mIvIcon, context.getString(R.string.trans_tag_image));
+                    Pair<View, String> pair2 = new Pair<View, String>(finalHolder.mContent, context.getString(R.string.trans_tag_text));
+                    context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, pair1, pair2).toBundle());
+                }
+            });
         }
     }
 
