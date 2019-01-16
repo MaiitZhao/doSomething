@@ -1,8 +1,9 @@
 package com.example.maiitzhao.myapplication;
 
-import android.os.Build;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,10 +26,12 @@ public class ShareElementActivity extends BaseActivity {
     ImageView ivTrans;
     @BindView(R.id.tv_trans)
     TextView tvTrans;
+    @BindView(R.id.iv_float)
+    ImageView floatBar;
 
     @Override
     protected int initContentView() {
-        return R.layout.activity_common_view;
+        return R.layout.activity_share_element;
     }
 
     @Override
@@ -39,6 +42,7 @@ public class ShareElementActivity extends BaseActivity {
         }
 
         initToolbar();
+        excuteAnimation(0f, 0f, 1.0f, 1.0f);
     }
 
     private void initToolbar() {
@@ -51,5 +55,21 @@ public class ShareElementActivity extends BaseActivity {
                 onBackPressed();
             }
         });
+    }
+
+    /**
+     * 执行动画
+     */
+    private void excuteAnimation(float startX, float startY, float endX, float endY) {
+        ScaleAnimation anim = new ScaleAnimation(startX, endX, startY, endY, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        anim.setDuration(500);
+        anim.setFillAfter(true);
+        floatBar.startAnimation(anim);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        excuteAnimation(1.0f, 1.0f, 0f, 0f);
     }
 }

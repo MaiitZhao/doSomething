@@ -11,14 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <LinearLayout
         android:id="@+id/ll_trans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="25dp">
 
         <ImageView
             android:id="@+id/iv_trans"
@@ -26,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:src="@mipmap/img_share_elements"
+            android:src="@mipmap/ic_test1"
             android:transitionName="@string/trans_tag_image" />
 
         <TextView
@@ -40,5 +41,17 @@
             android:transitionName="@string/trans_tag_text" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_float"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/img_share_elements"
+        android:transitionName="@string/trans_tag_float" />
 
 </RelativeLayout>
