@@ -10,8 +10,14 @@ import android.graphics.drawable.AnimationDrawable;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
+import android.view.animation.AnticipateInterpolator;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -20,6 +26,7 @@ import com.example.maiitzhao.myapplication.R;
 import com.example.maiitzhao.myapplication.common.HKFontTextView;
 import com.example.maiitzhao.myapplication.common.CommonDialog;
 import com.example.maiitzhao.myapplication.util.CommonUtil;
+import com.scwang.smartrefresh.header.waveswipe.DropBounceInterpolator;
 
 /**
  * Created by zpxiang on 2018/3/19.
@@ -343,7 +350,7 @@ public class SignMapDialogViewControl {
         Point controllPoint = new Point(pointX, pointY);
 
         ValueAnimator valueAnimator = ValueAnimator.ofObject(new BizierEvaluator(controllPoint), startPosition, endPosition);
-        valueAnimator.setDuration(900);
+        valueAnimator.setDuration(600);
         valueAnimator.start();
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -354,7 +361,7 @@ public class SignMapDialogViewControl {
                 rlSignHead.setY(point.y);
             }
         });
-
+        valueAnimator.setInterpolator(new DecelerateInterpolator());
         valueAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
