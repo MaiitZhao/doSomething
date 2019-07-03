@@ -27,6 +27,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import pub.devrel.easypermissions.EasyPermissions;
 
 import static android.view.View.GONE;
@@ -196,6 +197,7 @@ public class UpdateAppActivity extends BaseActivity implements UpdateAppManager.
         //非UI线程，支持任何耗时操作
         public JsonInfo parseNetworkResponse(Response response) throws IOException {
             String string = response.body().string();
+            ResponseBody body = response.body();
             JsonInfo jsonInfo = new Gson().fromJson(string, JsonInfo.class);
             return jsonInfo;
         }

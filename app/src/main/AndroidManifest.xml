@@ -53,7 +53,18 @@
         </provider>
 
         <activity android:name=".ShareElementActivity" />
-        <activity android:name=".ele.ELMActivity"/>
+        <activity android:name=".ele.ELMActivity" />
+
+        <activity
+            android:name=".testlaunchmode.SingleTopActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".testlaunchmode.SingleTaskActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".testlaunchmode.SingleInstanceActivity"
+            android:launchMode="singleInstance" />
+
     </application>
 
 </manifest>
